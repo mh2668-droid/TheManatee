@@ -3,58 +3,291 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ming's Fast Robots</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Manatee — current project status and field testing updates for an aquatic robot developed at Cornell University." />
+  <title>Manatee Updates | Aquatic Robotics</title>
+  <style>
+    :root {
+      --bg: #f6f7f5;
+      --surface: #ffffff;
+      --text: #14201c;
+      --muted: #65716c;
+      --line: #dfe5e1;
+      --accent: #1f6753;
+      --accent-soft: #e8f1ed;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, video { display: block; width: 100%; }
+    a { color: inherit; }
+
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+
+    .topbar {
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(20,32,28,.08);
+      background: rgba(246,247,245,.9);
+      backdrop-filter: blur(12px);
+    }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.02em; }
+    .lab { color: var(--muted); font-size: .92rem; text-align: right; }
+
+    .hero { padding: 88px 0 52px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      line-height: .92;
+      letter-spacing: -.065em;
+    }
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 26px 0 0;
+      font-size: clamp(1.25rem, 2.4vw, 2rem);
+      line-height: 1.25;
+      letter-spacing: -.025em;
+      color: #31403a;
+    }
+    .hero-copy {
+      max-width: 760px;
+      margin: 24px 0 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .hero-media {
+      margin-top: 46px;
+      min-height: 430px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #dfe9e4, #c8d8d1);
+      border: 1px solid var(--line);
+      position: relative;
+    }
+    .hero-media img { height: 100%; min-height: 430px; object-fit: cover; }
+    .placeholder {
+      min-height: inherit;
+      display: grid;
+      place-items: center;
+      padding: 36px;
+      text-align: center;
+      color: #51635b;
+    }
+    .placeholder strong { display: block; color: var(--text); font-size: 1.08rem; margin-bottom: 6px; }
+
+    section { padding: 72px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    .kicker { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h2 { margin: 7px 0 0; font-size: clamp(2.1rem, 4.5vw, 4rem); line-height: 1; letter-spacing: -.045em; }
+    .section-intro { margin: 0; color: var(--muted); font-size: 1.02rem; }
+
+    .status-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .status-date { color: var(--accent); font-weight: 800; font-size: .88rem; text-transform: uppercase; letter-spacing: .06em; }
+    .status-card h3 { margin: 0 0 8px; font-size: 1.45rem; letter-spacing: -.025em; }
+    .status-card p { margin: 0; color: var(--muted); }
+
+    .feature-video {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .video-frame { aspect-ratio: 16 / 9; background: #dfe6e2; }
+    .video-frame video { height: 100%; object-fit: cover; background: #0e1411; }
+    .video-placeholder { height: 100%; min-height: 100%; display: grid; place-items: center; padding: 24px; color: #52615b; text-align: center; }
+    .video-copy { padding: 24px 26px 27px; }
+    .video-copy h3 { margin: 0 0 6px; font-size: 1.35rem; letter-spacing: -.02em; }
+    .video-copy p { margin: 0; color: var(--muted); }
+
+    .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .video-card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
+    .video-card .video-copy { padding: 20px 22px 23px; }
+    .video-card .video-copy h3 { font-size: 1.16rem; }
+
+    footer { padding: 34px 0 46px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+      .topbar { padding: 17px 0; }
+      .lab { font-size: .8rem; }
+      .hero { padding: 58px 0 28px; }
+      h1 { font-size: clamp(3.4rem, 18vw, 5.4rem); }
+      .hero-subtitle { font-size: 1.35rem; }
+      .hero-media, .hero-media img { min-height: 280px; }
+      section { padding: 54px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 26px; }
+      .status-card { grid-template-columns: 1fr; gap: 10px; padding: 24px; }
+      .video-grid { grid-template-columns: 1fr; }
+      .feature-video, .video-card { border-radius: 18px; }
+    }
+  </style>
 </head>
 <body>
-
-<header class="header">
-  <div class="container header-grid">
-    <img class="avatar" src="profile.png" alt="Your photo">
-    <div>
-      <h1>Ming Huang</h1>
-      <p class="subtitle">
-        Fast Robots 2026 • Class: MAE 5190
-      </p>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">Manatee Updates</div>
+      <div class="lab">Collective Embodied Intelligence Lab · Cornell University</div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main class="container">
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow"><span class="dot"></span> Current project status</div>
+        <h1>Manatee</h1>
+        <p class="hero-subtitle">A robotic system for invasive aquatic vegetation management.</p>
+        <p class="hero-copy">Manatee is an ongoing research project at Cornell University developing a robotic system to cut, capture, and collect invasive aquatic vegetation in shallow waterways.</p>
 
-  <section class="card">
-    <h2>Hello!</h2>
-    <p>
-      This website documents my work for the Fast Robots course @ Cornell University Spring 2026, including the design, implementation, and evaluation of a fast autonomous robot. Weekly labs focus on sensing, embedded systems, communication, and control, with an emphasis on systems level design and real world constraints.
-  </section>
+        <div class="hero-media">
+          <!-- BEST OPTION: replace this placeholder with a wide field photo:
+          <img src="media/manatee-field.jpg" alt="Manatee prototype during field testing on Cayuga Lake">
+          -->
+          <div class="placeholder">
+            <div><strong>Hero photo</strong>Use a wide photo of the full Manatee prototype in the water.</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="card">
-    <h2>Lab Reports</h2>
-    <ol class="list" style="list-style: none; padding-left: 0;">
-      <li>
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Current status</div>
+            <h2>First in-water test</h2>
+          </div>
+          <p class="section-intro">The first-generation Manatee prototype was tested as an integrated system at Salt Point on Cayuga Lake.</p>
+        </div>
 
+        <div class="status-card">
+          <div class="status-date">September 2026<br>Salt Point, NY</div>
+          <div>
+            <h3>Taking Manatee from the lab to the lake.</h3>
+            <p>The field test focused on operating the pump, telescoping intake, and cutting system together in a real aquatic environment, including initial cutting and suction tests with aquatic vegetation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- Add new labs below -->
-    </ol>
-  </section>
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Field testing</div>
+            <h2>Manatee in action</h2>
+          </div>
+          <p class="section-intro">Short clips from the first field test show the main subsystems operating on the water.</p>
+        </div>
 
+        <article class="feature-video">
+          <div class="video-frame">
+            <!-- Replace placeholder with:
+            <video controls playsinline preload="metadata" poster="media/field-test-cover.jpg">
+              <source src="media/field-test.mp4" type="video/mp4">
+            </video>
+            -->
+            <div class="video-placeholder"><strong>MAIN VIDEO — Full field test</strong></div>
+          </div>
+          <div class="video-copy">
+            <h3>First field deployment</h3>
+            <p>The first integrated in-water test of the Manatee prototype at Salt Point on Cayuga Lake.</p>
+          </div>
+        </article>
 
+        <div class="video-grid">
+          <article class="video-card">
+            <div class="video-frame">
+              <!-- media/pumping.mp4 -->
+              <div class="video-placeholder"><strong>VIDEO — Pumping</strong></div>
+            </div>
+            <div class="video-copy">
+              <h3>Pumping</h3>
+              <p>Testing the vortex pump and intake system in open water.</p>
+            </div>
+          </article>
 
+          <article class="video-card">
+            <div class="video-frame">
+              <!-- media/telescope.mp4 -->
+              <div class="video-placeholder"><strong>VIDEO — Telescope</strong></div>
+            </div>
+            <div class="video-copy">
+              <h3>Telescoping intake</h3>
+              <p>Raising and lowering the intake to control the operating depth.</p>
+            </div>
+          </article>
 
- 
+          <article class="video-card">
+            <div class="video-frame">
+              <!-- media/cutting.mp4 -->
+              <div class="video-placeholder"><strong>VIDEO — Cutting</strong></div>
+            </div>
+            <div class="video-copy">
+              <h3>Cutting</h3>
+              <p>Testing the submerged cutting mechanism on aquatic vegetation.</p>
+            </div>
+          </article>
 
+          <article class="video-card">
+            <div class="video-frame">
+              <!-- media/cutting-suction.mp4 -->
+              <div class="video-placeholder"><strong>VIDEO — Cutting + suction</strong></div>
+            </div>
+            <div class="video-copy">
+              <h3>Cutting + suction</h3>
+              <p>Testing vegetation cutting and suction through the intake.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
-
-
-
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <small>© 2026 Ming Huang
-    </small>
-  </div>
-</footer>
-
+  <footer>
+    <div class="wrap footer-inner">
+      <span>Manatee · Aquatic Robotics</span>
+      <span>Collective Embodied Intelligence Lab · Cornell University</span>
+    </div>
+  </footer>
 </body>
 </html>
