@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Manatee — current project status and field testing updates for an aquatic robot developed at Cornell University." />
-  <title>Manatee Updates | Aquatic Robotics</title>
+
+  <meta
+    name="description"
+    content="Current project status and field testing updates for an aquatic vegetation removal robot developed at Cornell University."
+  />
+
+  <title>Aquatic Vegetation Removal Robot | Project Status</title>
+
   <style>
     :root {
       --bg: #f6f7f5;
@@ -13,281 +19,521 @@
       --muted: #65716c;
       --line: #dfe5e1;
       --accent: #1f6753;
-      --accent-soft: #e8f1ed;
-      --max: 1120px;
+      --max: 1050px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
     }
 
-    img, video { display: block; width: 100%; }
-    a { color: inherit; }
+    img,
+    video {
+      display: block;
+      width: 100%;
+    }
 
-    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .wrap {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       TOP BAR
+       ========================= */
 
     .topbar {
-      padding: 22px 0;
-      border-bottom: 1px solid rgba(20,32,28,.08);
-      background: rgba(246,247,245,.9);
-      backdrop-filter: blur(12px);
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246, 247, 245, 0.95);
     }
-    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { font-weight: 800; letter-spacing: -.02em; }
-    .lab { color: var(--muted); font-size: .92rem; text-align: right; }
 
-    .hero { padding: 88px 0 52px; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 18px;
+    .lab {
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    /* =========================
+       PROJECT INTRO
+       ========================= */
+
+    .hero {
+      padding: 42px 0 36px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.06;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* =========================
+       SECTIONS
+       ========================= */
+
+    section {
+      padding: 38px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 36px;
+      margin-bottom: 20px;
+    }
+
+    .kicker {
       color: var(--accent);
-      font-size: .78rem;
+      font-size: 0.74rem;
       font-weight: 800;
-      letter-spacing: .12em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
     }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-    h1 {
-      max-width: 900px;
+
+    h2 {
+      margin: 4px 0 0;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .section-intro {
+      max-width: 420px;
       margin: 0;
-      font-size: clamp(3.5rem, 9vw, 7.5rem);
-      line-height: .92;
-      letter-spacing: -.065em;
-    }
-    .hero-subtitle {
-      max-width: 760px;
-      margin: 26px 0 0;
-      font-size: clamp(1.25rem, 2.4vw, 2rem);
-      line-height: 1.25;
-      letter-spacing: -.025em;
-      color: #31403a;
-    }
-    .hero-copy {
-      max-width: 760px;
-      margin: 24px 0 0;
-      font-size: 1.05rem;
       color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    .hero-media {
-      margin-top: 46px;
-      min-height: 430px;
-      border-radius: 28px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #dfe9e4, #c8d8d1);
-      border: 1px solid var(--line);
-      position: relative;
-    }
-    .hero-media img { height: 100%; min-height: 430px; object-fit: cover; }
-    .placeholder {
-      min-height: inherit;
-      display: grid;
-      place-items: center;
-      padding: 36px;
-      text-align: center;
-      color: #51635b;
-    }
-    .placeholder strong { display: block; color: var(--text); font-size: 1.08rem; margin-bottom: 6px; }
-
-    section { padding: 72px 0; }
-    .section-head {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
-      gap: 60px;
-      align-items: end;
-      margin-bottom: 34px;
-    }
-    .kicker { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    h2 { margin: 7px 0 0; font-size: clamp(2.1rem, 4.5vw, 4rem); line-height: 1; letter-spacing: -.045em; }
-    .section-intro { margin: 0; color: var(--muted); font-size: 1.02rem; }
+    /* =========================
+       CURRENT STATUS
+       ========================= */
 
     .status-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 30px;
       display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 28px;
-      align-items: start;
-    }
-    .status-date { color: var(--accent); font-weight: 800; font-size: .88rem; text-transform: uppercase; letter-spacing: .06em; }
-    .status-card h3 { margin: 0 0 8px; font-size: 1.45rem; letter-spacing: -.025em; }
-    .status-card p { margin: 0; color: var(--muted); }
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
 
-    .feature-video {
+      padding: 18px 20px;
+
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 26px;
-      overflow: hidden;
-      margin-bottom: 24px;
+      border-radius: 14px;
     }
-    .video-frame { aspect-ratio: 16 / 9; background: #dfe6e2; }
-    .video-frame video { height: 100%; object-fit: cover; background: #0e1411; }
-    .video-placeholder { height: 100%; min-height: 100%; display: grid; place-items: center; padding: 24px; color: #52615b; text-align: center; }
-    .video-copy { padding: 24px 26px 27px; }
-    .video-copy h3 { margin: 0 0 6px; font-size: 1.35rem; letter-spacing: -.02em; }
-    .video-copy p { margin: 0; color: var(--muted); }
 
-    .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-    .video-card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
-    .video-card .video-copy { padding: 20px 22px 23px; }
-    .video-card .video-copy h3 { font-size: 1.16rem; }
+    .status-date {
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
 
-    footer { padding: 34px 0 46px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .status-card h3 {
+      margin: 0 0 4px;
+      font-size: 1.08rem;
+    }
 
-    @media (max-width: 760px) {
-      .wrap { width: min(calc(100% - 28px), var(--max)); }
-      .topbar { padding: 17px 0; }
-      .lab { font-size: .8rem; }
-      .hero { padding: 58px 0 28px; }
-      h1 { font-size: clamp(3.4rem, 18vw, 5.4rem); }
-      .hero-subtitle { font-size: 1.35rem; }
-      .hero-media, .hero-media img { min-height: 280px; }
-      section { padding: 54px 0; }
-      .section-head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 26px; }
-      .status-card { grid-template-columns: 1fr; gap: 10px; padding: 24px; }
-      .video-grid { grid-template-columns: 1fr; }
-      .feature-video, .video-card { border-radius: 18px; }
+    .status-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    /* =========================
+       TESTING VIDEOS
+       ========================= */
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .video-card {
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .video-frame {
+      aspect-ratio: 16 / 9;
+      background: #e1e7e3;
+    }
+
+    .video-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #111;
+    }
+
+    .video-placeholder {
+      display: grid;
+      place-items: center;
+      height: 100%;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 650;
+      text-align: center;
+    }
+
+    .video-copy {
+      padding: 13px 15px 15px;
+    }
+
+    .video-copy h3 {
+      margin: 0 0 3px;
+      font-size: 1rem;
+    }
+
+    .video-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      padding: 26px 0 34px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 700px) {
+      .wrap {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .topbar {
+        padding: 14px 0;
+      }
+
+      .lab {
+        font-size: 0.78rem;
+      }
+
+      .hero {
+        padding: 30px 0 26px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+      }
+
+      .hero-copy {
+        font-size: 0.94rem;
+      }
+
+      section {
+        padding: 30px 0;
+      }
+
+      .section-head {
+        display: block;
+        margin-bottom: 18px;
+      }
+
+      .section-intro {
+        margin-top: 9px;
+      }
+
+      .status-card {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 16px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
+
+  <!-- =========================
+       LAB / SCHOOL
+       ========================= -->
+
   <header class="topbar">
-    <div class="wrap topbar-inner">
-      <div class="brand">Manatee Updates</div>
-      <div class="lab">Collective Embodied Intelligence Lab · Cornell University</div>
+    <div class="wrap">
+      <div class="lab">
+        Collective Embodied Intelligence Lab · Cornell University
+      </div>
     </div>
   </header>
 
+
   <main>
+
+    <!-- =========================
+         PROJECT DESCRIPTION
+         ========================= -->
+
     <section class="hero">
       <div class="wrap">
-        <div class="eyebrow"><span class="dot"></span> Current project status</div>
-        <h1>Manatee</h1>
-        <p class="hero-subtitle">A robotic system for invasive aquatic vegetation management.</p>
-        <p class="hero-copy">Manatee is an ongoing research project at Cornell University developing a robotic system to cut, capture, and collect invasive aquatic vegetation in shallow waterways.</p>
 
-        <div class="hero-media">
-          <!-- BEST OPTION: replace this placeholder with a wide field photo:
-          <img src="media/manatee-field.jpg" alt="Manatee prototype during field testing on Cayuga Lake">
-          -->
-          <div class="placeholder">
-            <div><strong>Hero photo</strong>Use a wide photo of the full Manatee prototype in the water.</div>
-          </div>
-        </div>
+        <h1>
+          Robotic System for Invasive Aquatic Vegetation Management
+        </h1>
+
+        <p class="hero-copy">
+          An ongoing research project developing a robotic system to cut,
+          capture, and collect invasive aquatic vegetation in shallow waterways.
+        </p>
+
       </div>
     </section>
 
+
+    <!-- =========================
+         CURRENT PROJECT STATUS
+         ========================= -->
+
     <section>
       <div class="wrap">
+
         <div class="section-head">
+
           <div>
-            <div class="kicker">Current status</div>
-            <h2>First in-water test</h2>
+            <div class="kicker">Current Project Status</div>
+            <h2>First In-Water Prototype Test</h2>
           </div>
-          <p class="section-intro">The first-generation Manatee prototype was tested as an integrated system at Salt Point on Cayuga Lake.</p>
+
+          <p class="section-intro">
+            First-generation prototype field testing at Salt Point on Cayuga Lake.
+          </p>
+
         </div>
+
 
         <div class="status-card">
-          <div class="status-date">September 2026<br>Salt Point, NY</div>
-          <div>
-            <h3>Taking Manatee from the lab to the lake.</h3>
-            <p>The field test focused on operating the pump, telescoping intake, and cutting system together in a real aquatic environment, including initial cutting and suction tests with aquatic vegetation.</p>
+
+          <div class="status-date">
+            September 2026<br>
+            Salt Point, NY
           </div>
+
+          <div>
+            <h3>First Integrated Field Test</h3>
+
+            <p>
+              Tested the pump, telescoping intake, cutting system, and
+              vegetation cutting and suction in a real aquatic environment.
+            </p>
+          </div>
+
         </div>
+
       </div>
     </section>
+
+
+    <!-- =========================
+         FIELD TESTING VIDEOS
+         ========================= -->
 
     <section>
       <div class="wrap">
+
         <div class="section-head">
+
           <div>
-            <div class="kicker">Field testing</div>
-            <h2>Manatee in action</h2>
+            <div class="kicker">Field Testing</div>
+            <h2>Testing Videos</h2>
           </div>
-          <p class="section-intro">Short clips from the first field test show the main subsystems operating on the water.</p>
+
+          <p class="section-intro">
+            Short clips from the first field test of the integrated prototype.
+          </p>
+
         </div>
 
-        <article class="feature-video">
-          <div class="video-frame">
-            <!-- Replace placeholder with:
-            <video controls playsinline preload="metadata" poster="media/field-test-cover.jpg">
-              <source src="media/field-test.mp4" type="video/mp4">
-            </video>
-            -->
-            <div class="video-placeholder"><strong>MAIN VIDEO — Full field test</strong></div>
-          </div>
-          <div class="video-copy">
-            <h3>First field deployment</h3>
-            <p>The first integrated in-water test of the Manatee prototype at Salt Point on Cayuga Lake.</p>
-          </div>
-        </article>
 
         <div class="video-grid">
+
+          <!-- PUMPING -->
+
           <article class="video-card">
+
             <div class="video-frame">
-              <!-- media/pumping.mp4 -->
-              <div class="video-placeholder"><strong>VIDEO — Pumping</strong></div>
+
+              <!--
+              When your video is ready, replace the placeholder below with:
+
+              <video controls playsinline preload="metadata">
+                <source src="media/pumping.mp4" type="video/mp4">
+              </video>
+              -->
+
+              <div class="video-placeholder">
+                PUMPING VIDEO
+              </div>
+
             </div>
+
             <div class="video-copy">
               <h3>Pumping</h3>
-              <p>Testing the vortex pump and intake system in open water.</p>
+
+              <p>
+                Testing water flow through the vortex pump and intake.
+              </p>
             </div>
+
           </article>
 
+
+          <!-- TELESCOPING INTAKE -->
+
           <article class="video-card">
+
             <div class="video-frame">
-              <!-- media/telescope.mp4 -->
-              <div class="video-placeholder"><strong>VIDEO — Telescope</strong></div>
+
+              <!--
+              <video controls playsinline preload="metadata">
+                <source src="media/telescope.mp4" type="video/mp4">
+              </video>
+              -->
+
+              <div class="video-placeholder">
+                TELESCOPING INTAKE VIDEO
+              </div>
+
             </div>
+
             <div class="video-copy">
-              <h3>Telescoping intake</h3>
-              <p>Raising and lowering the intake to control the operating depth.</p>
+              <h3>Telescoping Intake</h3>
+
+              <p>
+                Raising and lowering the intake to control operating depth.
+              </p>
             </div>
+
           </article>
 
+
+          <!-- CUTTING -->
+
           <article class="video-card">
+
             <div class="video-frame">
-              <!-- media/cutting.mp4 -->
-              <div class="video-placeholder"><strong>VIDEO — Cutting</strong></div>
+
+              <!--
+              <video controls playsinline preload="metadata">
+                <source src="media/cutting.mp4" type="video/mp4">
+              </video>
+              -->
+
+              <div class="video-placeholder">
+                CUTTING VIDEO
+              </div>
+
             </div>
+
             <div class="video-copy">
               <h3>Cutting</h3>
-              <p>Testing the submerged cutting mechanism on aquatic vegetation.</p>
+
+              <p>
+                Testing the submerged cutting mechanism on aquatic vegetation.
+              </p>
             </div>
+
           </article>
 
+
+          <!-- CUTTING + SUCTION -->
+
           <article class="video-card">
+
             <div class="video-frame">
-              <!-- media/cutting-suction.mp4 -->
-              <div class="video-placeholder"><strong>VIDEO — Cutting + suction</strong></div>
+
+              <!--
+              <video controls playsinline preload="metadata">
+                <source src="media/cutting-suction.mp4" type="video/mp4">
+              </video>
+              -->
+
+              <div class="video-placeholder">
+                CUTTING + SUCTION VIDEO
+              </div>
+
             </div>
+
             <div class="video-copy">
-              <h3>Cutting + suction</h3>
-              <p>Testing vegetation cutting and suction through the intake.</p>
+              <h3>Cutting + Suction</h3>
+
+              <p>
+                Testing vegetation cutting and suction through the intake.
+              </p>
             </div>
+
           </article>
+
         </div>
+
       </div>
     </section>
+
   </main>
+
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
 
   <footer>
     <div class="wrap footer-inner">
-      <span>Manatee · Aquatic Robotics</span>
-      <span>Collective Embodied Intelligence Lab · Cornell University</span>
+
+      <span>Aquatic Robotics Research</span>
+
+      <span>
+        Collective Embodied Intelligence Lab · Cornell University
+      </span>
+
     </div>
   </footer>
+
 </body>
 </html>
