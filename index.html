@@ -13,6 +13,7 @@
   <title>Aquatic Vegetation Robotics | Cornell University</title>
 
   <style>
+
     :root {
       --bg: #f6f7f5;
       --surface: #ffffff;
@@ -23,23 +24,34 @@
       --max: 1000px;
     }
 
+
     * {
       box-sizing: border-box;
     }
+
 
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
 
+
     a {
       color: inherit;
     }
+
 
     img,
     video {
@@ -47,187 +59,284 @@
       width: 100%;
     }
 
+
     .wrap {
       width: min(calc(100% - 40px), var(--max));
       margin: 0 auto;
     }
 
 
-    /* LAB */
+
+    /* =========================================
+       LAB HEADER
+       ========================================= */
 
     .topbar {
       padding: 15px 0;
       border-bottom: 1px solid var(--line);
     }
 
+
     .lab {
       font-size: 0.82rem;
+      font-weight: 400;
     }
+
 
     .lab a {
       text-decoration: none;
     }
 
+
     .lab a:hover {
       text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
 
-    /* MISSION */
 
-    .mission {
-      padding: 34px 0 30px;
-      border-bottom: 1px solid var(--line);
+    /* =========================================
+       GOAL
+       ========================================= */
+
+    .goal {
+      padding: 34px 0 0;
     }
+
 
     .label {
       margin: 0 0 7px;
+
       color: var(--accent);
+
       font-size: 0.72rem;
+      font-weight: 400;
+
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .mission-text {
-      max-width: 760px;
+
+    .goal-text {
+      max-width: 780px;
+
       margin: 0;
+
       font-size: clamp(1.45rem, 3vw, 2.15rem);
+      font-weight: 400;
+
       line-height: 1.2;
       letter-spacing: -0.025em;
     }
 
 
-    /* CURRENT STATUS */
-
-    .status {
-      padding: 30px 0 42px;
+    .divider {
+      margin-top: 30px;
+      border-bottom: 1px solid var(--line);
     }
 
+
+
+    /* =========================================
+       CURRENT PROJECT STATUS
+       ========================================= */
+
+    .status {
+      padding: 27px 0 40px;
+    }
+
+
     .status-title {
-      margin: 0 0 22px;
+      margin: 0 0 24px;
+
       font-size: 1.25rem;
       font-weight: 400;
+
       letter-spacing: -0.015em;
     }
 
 
-    /* INDIVIDUAL UPDATE */
+
+    /* =========================================
+       INDIVIDUAL PROJECT UPDATE
+
+       Add future updates ABOVE older updates.
+       ========================================= */
 
     .update {
-      padding: 22px 0 30px;
+      padding: 24px 0 30px;
       border-top: 1px solid var(--line);
     }
+
 
     .update:first-of-type {
       padding-top: 0;
       border-top: 0;
     }
 
+
     .update-meta {
       margin: 0 0 4px;
+
       color: var(--accent);
+
       font-size: 0.72rem;
+      font-weight: 400;
+
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
+
     .update-title {
       margin: 0;
+
       font-size: 1.05rem;
       font-weight: 400;
     }
 
+
     .update-description {
-      max-width: 650px;
+      max-width: 680px;
+
       margin: 5px 0 15px;
+
       color: var(--muted);
+
       font-size: 0.84rem;
+      font-weight: 400;
     }
 
 
-    /* VIDEOS */
+
+    /* =========================================
+       VIDEO GRID
+       ========================================= */
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
       gap: 12px;
     }
 
+
     .video-card {
       overflow: hidden;
+
       background: var(--surface);
+
       border: 1px solid var(--line);
       border-radius: 10px;
     }
+
 
     .video-frame {
       aspect-ratio: 16 / 9;
       background: #e1e7e3;
     }
 
+
     .video-frame video {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       background: #111;
     }
+
 
     .video-placeholder {
       display: grid;
       place-items: center;
+
       height: 100%;
+
       padding: 15px;
+
       color: var(--muted);
+
       font-size: 0.7rem;
+      font-weight: 400;
+
       letter-spacing: 0.03em;
       text-align: center;
     }
+
 
     .video-copy {
       padding: 9px 11px 10px;
     }
 
+
     .video-copy h3 {
       margin: 0;
+
       font-size: 0.86rem;
       font-weight: 400;
     }
 
+
     .video-copy p {
       margin: 2px 0 0;
+
       color: var(--muted);
+
       font-size: 0.75rem;
-    }
-
-
-    /* INTERESTED */
-
-    .interested {
-      padding: 30px 0 36px;
-      border-top: 1px solid var(--line);
-    }
-
-    .interested h2 {
-      margin: 0 0 7px;
-      font-size: 1.15rem;
       font-weight: 400;
     }
 
-    .interested p {
-      max-width: 650px;
-      margin: 0 0 9px;
-      color: var(--muted);
-      font-size: 0.84rem;
+
+
+    /* =========================================
+       INTERESTED / CONTACT
+       ========================================= */
+
+    .interested {
+      padding: 29px 0 36px;
+
+      border-top: 1px solid var(--line);
     }
+
+
+    .interested h2 {
+      margin: 0 0 7px;
+
+      font-size: 1.15rem;
+      font-weight: 400;
+
+      letter-spacing: -0.01em;
+    }
+
+
+    .interested p {
+      max-width: 680px;
+
+      margin: 0 0 10px;
+
+      color: var(--muted);
+
+      font-size: 0.84rem;
+      font-weight: 400;
+    }
+
 
     .contact {
       font-size: 0.84rem;
+      font-weight: 400;
+
       text-decoration: underline;
       text-underline-offset: 3px;
     }
 
 
-    /* MOBILE */
+
+    /* =========================================
+       MOBILE
+       ========================================= */
 
     @media (max-width: 650px) {
 
@@ -235,228 +344,375 @@
         width: min(calc(100% - 28px), var(--max));
       }
 
+
       .topbar {
         padding: 12px 0;
       }
+
 
       .lab {
         font-size: 0.74rem;
       }
 
-      .mission {
-        padding: 27px 0 24px;
+
+      .goal {
+        padding-top: 27px;
       }
 
-      .mission-text {
+
+      .goal-text {
         font-size: 1.45rem;
       }
 
-      .status {
-        padding: 25px 0 32px;
+
+      .divider {
+        margin-top: 25px;
       }
+
+
+      .status {
+        padding: 23px 0 31px;
+      }
+
+
+      .status-title {
+        margin-bottom: 20px;
+      }
+
 
       .video-grid {
         grid-template-columns: 1fr;
       }
 
+
       .interested {
         padding: 25px 0 30px;
       }
+
     }
 
   </style>
 </head>
 
 
+
 <body>
 
 
-  <!-- LAB -->
+  <!-- =========================================
+       LAB
+       ========================================= -->
 
   <header class="topbar">
+
     <div class="wrap">
 
       <div class="lab">
+
         <a
           href="https://cei.ece.cornell.edu/research-2/aquatic-robotics/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Collective Embodied Intelligence Laboratory
+          Collective Embodied Intelligence Lab
         </a>
+
         · Cornell University
+
       </div>
 
     </div>
+
   </header>
+
 
 
   <main>
 
 
-    <!-- MISSION -->
+    <!-- =========================================
+         GOAL
+         ========================================= -->
 
-    <section class="Goal">
+    <section class="goal">
+
       <div class="wrap">
 
-        <p class="label">Mission</p>
+        <p class="label">
+          Goal
+        </p>
 
-        <p class="mission-text">
+
+        <p class="goal-text">
           Develop a robotic system for monitoring and targeted removal
           of aquatic vegetation.
         </p>
 
+
+        <div class="divider"></div>
+
       </div>
+
     </section>
 
 
-    <!-- CURRENT PROJECT STATUS -->
+
+    <!-- =========================================
+         CURRENT PROJECT STATUS
+         ========================================= -->
 
     <section class="status">
+
       <div class="wrap">
+
 
         <h1 class="status-title">
           Current Project Status
         </h1>
 
 
-        <!-- ======================================
-             SEPTEMBER 2026 UPDATE
-             Future updates can be added ABOVE this.
-             ====================================== -->
+
+        <!-- =====================================
+             SEPTEMBER 2026
+
+             When you have a new update,
+             add another <article class="update">
+             ABOVE this one.
+
+             Do not delete this update.
+             ===================================== -->
 
         <article class="update">
+
 
           <p class="update-meta">
             September 2026 · Salt Point, Cayuga Lake
           </p>
 
+
           <h2 class="update-title">
-            First field test
+            First integrated field test
           </h2>
+
+
+          <p class="update-description">
+            First-generation prototype testing of the pump,
+            telescoping intake, cutting system, and vegetation removal.
+          </p>
+
+
 
           <div class="video-grid">
 
 
-            <!-- PUMPING -->
+            <!-- ===============================
+                 PUMPING
+                 =============================== -->
 
             <div class="video-card">
 
               <div class="video-frame">
 
+
                 <!--
-                Replace this placeholder with:
+
+                WHEN YOUR VIDEO IS READY:
+
+                Delete the placeholder below
+                and uncomment this:
 
                 <video controls playsinline preload="metadata">
-                  <source src="media/pumping.mp4" type="video/mp4">
+                  <source
+                    src="media/pumping.mp4"
+                    type="video/mp4"
+                  >
                 </video>
+
                 -->
+
 
                 <div class="video-placeholder">
                   PUMPING VIDEO
                 </div>
 
+
               </div>
 
+
               <div class="video-copy">
-                <h3>Pumping</h3>
-                <p>Vortex pump and intake testing.</p>
+
+                <h3>
+                  Pumping
+                </h3>
+
+                <p>
+                  Vortex pump and intake testing.
+                </p>
+
               </div>
 
             </div>
 
 
-            <!-- TELESCOPING INTAKE -->
+
+            <!-- ===============================
+                 TELESCOPING INTAKE
+                 =============================== -->
 
             <div class="video-card">
 
               <div class="video-frame">
 
+
                 <!--
+
                 <video controls playsinline preload="metadata">
-                  <source src="media/telescope.mp4" type="video/mp4">
+                  <source
+                    src="media/telescope.mp4"
+                    type="video/mp4"
+                  >
                 </video>
+
                 -->
+
 
                 <div class="video-placeholder">
                   TELESCOPING INTAKE VIDEO
                 </div>
 
+
               </div>
 
+
               <div class="video-copy">
-                <h3>Telescoping intake</h3>
-                <p>Intake depth adjustment.</p>
+
+                <h3>
+                  Telescoping intake
+                </h3>
+
+                <p>
+                  Intake depth adjustment.
+                </p>
+
               </div>
 
             </div>
 
 
-            <!-- CUTTING -->
+
+            <!-- ===============================
+                 CUTTING
+                 =============================== -->
 
             <div class="video-card">
 
               <div class="video-frame">
 
+
                 <!--
+
                 <video controls playsinline preload="metadata">
-                  <source src="media/cutting.mp4" type="video/mp4">
+                  <source
+                    src="media/cutting.mp4"
+                    type="video/mp4"
+                  >
                 </video>
+
                 -->
+
 
                 <div class="video-placeholder">
                   CUTTING VIDEO
                 </div>
 
+
               </div>
 
+
               <div class="video-copy">
-                <h3>Cutting</h3>
-                <p>Submerged vegetation cutting.</p>
+
+                <h3>
+                  Cutting
+                </h3>
+
+                <p>
+                  Submerged vegetation cutting.
+                </p>
+
               </div>
 
             </div>
 
 
-            <!-- CUTTING + SUCTION -->
+
+            <!-- ===============================
+                 CUTTING + SUCTION
+                 =============================== -->
 
             <div class="video-card">
 
               <div class="video-frame">
 
+
                 <!--
+
                 <video controls playsinline preload="metadata">
-                  <source src="media/cutting-suction.mp4" type="video/mp4">
+                  <source
+                    src="media/cutting-suction.mp4"
+                    type="video/mp4"
+                  >
                 </video>
+
                 -->
+
 
                 <div class="video-placeholder">
                   CUTTING + SUCTION VIDEO
                 </div>
 
+
               </div>
 
+
               <div class="video-copy">
-                <h3>Cutting + suction</h3>
-                <p>Integrated vegetation removal test.</p>
+
+                <h3>
+                  Cutting + suction
+                </h3>
+
+                <p>
+                  Integrated vegetation removal test.
+                </p>
+
               </div>
 
             </div>
 
 
           </div>
+
         </article>
 
+
       </div>
+
     </section>
 
 
-    <!-- INTERESTED -->
+
+    <!-- =========================================
+         INTERESTED?
+         ========================================= -->
 
     <section class="interested">
+
       <div class="wrap">
 
-        <h2>Interested?</h2>
+
+        <h2>
+          Interested?
+        </h2>
+
 
         <p>
           We are always looking to connect with aquatic vegetation managers,
@@ -464,15 +720,22 @@
           your feedback, advice, and perspective.
         </p>
 
-        <a class="contact" href="mailto:mh2668@cornell.edu">
+
+        <a
+          class="contact"
+          href="mailto:mh2668@cornell.edu"
+        >
           mh2668@cornell.edu
         </a>
 
+
       </div>
+
     </section>
 
 
   </main>
+
 
 </body>
 
