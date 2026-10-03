@@ -249,6 +249,20 @@
     }
 
 
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+
+    .field-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
     .video-placeholder {
       display: grid;
       place-items: center;
@@ -515,28 +529,13 @@
 
               <div class="video-frame">
 
-
-                <!--
-
-                WHEN YOUR VIDEO IS READY:
-
-                Delete the placeholder below
-                and uncomment this:
-
-                <video controls playsinline preload="metadata">
-                  <source
-                    src="media/pumping.mp4"
-                    type="video/mp4"
-                  >
-                </video>
-
-                -->
-
-
-                <div class="video-placeholder">
-                  PUMPING VIDEO
-                </div>
-
+                <iframe
+                  src="https://www.youtube.com/embed/hYKs61zWYpw"
+                  title="Pumping test"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
 
               </div>
 
@@ -565,30 +564,18 @@
 
               <div class="video-frame">
 
-
-                <!--
-
-                <video controls playsinline preload="metadata">
-                  <source
-                    src="media/telescope.mp4"
-                    type="video/mp4"
-                  >
-                </video>
-
-                -->
-
-
-                <div class="video-placeholder">
-                  TELESCOPING INTAKE VIDEO
-                </div>
-
+                <iframe
+                  src="https://www.youtube.com/embed/emvMiSk-F2g"
+                  title="Telescoping intake extension and retraction"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
 
               </div>
 
 
               <div class="video-copy">
-
-
 
                 <p>
                   Telescope extension and retraction.
@@ -608,33 +595,21 @@
 
               <div class="video-frame">
 
-
-                <!--
-
-                <video controls playsinline preload="metadata">
-                  <source
-                    src="media/cutting.mp4"
-                    type="video/mp4"
-                  >
-                </video>
-
-                -->
-
-
-                <div class="video-placeholder">
-                  CUTTING VIDEO
-                </div>
-
+                <iframe
+                  src="https://www.youtube.com/embed/4oqou1j9dmI"
+                  title="Cutting and suction with seaweed"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
 
               </div>
 
 
               <div class="video-copy">
 
-  
-
                 <p>
-                  Cutting and Suction over Seaweed.
+                  Cutting and Suction with Seaweed.
                 </p>
 
               </div>
@@ -644,37 +619,23 @@
 
 
             <!-- ===============================
-                 CUTTING + SUCTION
+                 SALT POINT PICTURE
                  =============================== -->
 
             <div class="video-card">
 
               <div class="video-frame">
 
-
-                <!--
-
-                <video controls playsinline preload="metadata">
-                  <source
-                    src="media/cutting-suction.mp4"
-                    type="video/mp4"
-                  >
-                </video>
-
-                -->
-
-
-                <div class="video-placeholder">
-                  CUTTING + SUCTION VIDEO
-                </div>
-
+                <img
+                  src="salt_point.jpg"
+                  alt="Salt Point, Cayuga Lake"
+                  class="field-photo"
+                >
 
               </div>
 
 
               <div class="video-copy">
-
-
 
                 <p>
                   Integrated vegetation removal test.
@@ -720,7 +681,7 @@
         <p class="contact-info">
           Contact:
           <a href="mailto:mh2668@cornell.edu">
-            mh2668@cornell.edu
+            Ming Huang
           </a>
           · +1 (626) 342-7532
         </p>
@@ -731,6 +692,8 @@
             Prof. Kirstin Petersen
           </a>
         </p>
+
+        
 
 
       </div>
